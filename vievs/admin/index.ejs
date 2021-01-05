@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from themes.pixelstrap.com/multikart/back-end/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Dec 2019 12:59:20 GMT -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SellIt - Admin </title>
+
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/fontawesome.css">
+
+    <!-- Flag icon-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/flag-icon.css">
+
+    <!-- ico-font-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/icofont.css">
+
+    <!-- Prism css-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/prism.css">
+
+    <!-- Chartist css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/chartist.css">
+
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
+
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/admin.css">
+<!--  -->
+    <!-- Themify icon-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/themify-icons.css">
+
+    <!-- owlcarousel css-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/owlcarousel.css">
+
+    <!-- Rating css-->
+    <link rel="stylesheet" type="text/css" href="/assets/css/rating.css">
+
+    <!--  -->
+        <!-- jsgrid css-->
+        <link rel="stylesheet" type="text/css" href="/assets/css/jsgrid.css">
+
+</head>
+
+<body>
+ <!-- page-wrapper Start-->
+<div class="page-wrapper">
+
+    <!-- Page Header Start-->
+    <div class="page-main-header">
+        <div class="main-header-right row">
+            <div class="main-header-left d-lg-none">
+                <div class="logo-wrapper"><a href="/api/v1/admin/page/main"><img class="w-50 p-3" src="/assets/images/logo_g.png" alt=""></a></div>
+            </div>
+            <div class="mobile-sidebar">
+                <div class="media-body text-right switch-sm">
+                    <label class="switch"><a href="#"><i id="sidebar-toggle" data-feather="align-left"></i></a></label>
+                </div>
+            </div>
+            <div class="nav-right col">
+                <ul class="nav-menus">
+
+                    <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize-2"></i></a></li>
+
+
+                    <li class="onhover-dropdown">
+                        <div class="media align-items-center"><img class="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded" src="/assets/images/admin.png" alt="header-user">
+                            <div class="dotted-animation"><span class="animate-circle"></span><span class="main-circle"></span></div>
+                        </div>
+                        <ul class="profile-dropdown onhover-show-div p-20 profile-dropdown-hover">
+
+                            <li><a href="#" onclick="logout()"><i data-feather="log-out"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-lg-none mobile-toggle pull-right"><i data-feather="more-horizontal"></i></div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header Ends -->
+
+    <!-- Page Body Start-->
+    <div class="page-body-wrapper">
+
+        <!-- Page Sidebar Start-->
+        <div class="page-sidebar">
+            <div class="main-header-left d-none d-lg-block">
+                <div class="logo-wrapper"><a href="/api/v1/admin/page/main"><img class="w-50 p-3" src="/assets/images/logo_g.png" alt=""></a></div>
+            </div>
+            <div class="sidebar custom-scrollbar">
+                <div class="sidebar-user text-center">
+                    <div><img class="img-60 rounded-circle lazyloaded blur-up" src="/assets/images/admin.png" alt="#">
+                    </div>
+                    <h6 id="user_name" class="mt-3 f-14">JOHN</h6>
+                    <p>general manager.</p>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a class="sidebar-header" href="/api/v1/admin/page/main"><i data-feather="home"></i><span>Dashboard</span></a></li>
+                    <li><a class="sidebar-header" href="#"><i data-feather="box"></i> <span>Products</span><i class="fa fa-angle-right pull-right"></i></a>
+                        <ul class="sidebar-submenu">
+                            <li>
+                                <a href="#" onclick="showProductsbyStatus(3)"><i class="fa fa-circle"></i>
+                                    <span>Pending Products</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="#" onclick="showProductsbyStatus(1)"><i class="fa fa-circle"></i>
+                                    <span>Approved Products</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+
+                            </li>
+							<li>
+                                <a href="#" onclick="showProductsbyStatus(2)"><i class="fa fa-circle"></i>
+                                    <span>Sold Products</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="#" onclick="showProductsbyStatus(4)"><i class="fa fa-circle"></i>
+                                    <span>Inactive Products</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </li>
+
+					<li><a class="sidebar-header" href="#"><i data-feather="box"></i> <span>Categories</span><i class="fa fa-angle-right pull-right"></i></a>
+                        <ul class="sidebar-submenu">
+                            <li>
+                                <a href="#" onclick="getAllCategory()" ><i class="fa fa-circle"></i>
+                                    <span>Add Category</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="#" onclick="getAllSubCategory()"><i class="fa fa-circle"></i>
+                                    <span>Add SubCategory</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </li>
+
+					<li><a class="sidebar-header" href="#"><i data-feather="box"></i> <span>Users</span><i class="fa fa-angle-right pull-right"></i></a>
+                        <ul class="sidebar-submenu">
+                            <li>
+                                <a href="#" onclick="getAllUsers()" ><i class="fa fa-circle"></i>
+                                    <span>Users List</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- Page Sidebar Ends-->
+
+        <div class="page-body">
+
+            <!-- Container-fluid starts-->
+            <div class="container-fluid">
+                <div class="page-header">
+                    <div class="row">
+                        <h3 id="mainHeader" >Dashboard</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- Container-fluid Ends-->
+
+            <!-- Container-fluid starts-->
+            <div id="mainContainer" class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden widget-cards">
+                            <div class="bg-warning card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="box" class="font-warning"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">Total of Product Amount</span>
+                                        <h3 class="mb-0">&euro; <span class="counter"><%= totalProductAmount%></span></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden  widget-cards">
+                            <div class="bg-secondary card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="box" class="font-secondary"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">Total Sold Product Amount</span>
+                                        <h3 class="mb-0">&euro; <span class="counter"><%= totalSoldProductAmount%></span></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden widget-cards">
+                            <div class="bg-primary card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="message-square" class="font-primary"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">Total Messages</span>
+                                        <h3 class="mb-0"><span class="counter"><%= totalMessage%></span></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card o-hidden widget-cards">
+                            <div class="bg-danger card-body">
+                                <div class="media static-top-widget row">
+                                    <div class="icons-widgets col-4">
+                                        <div class="align-self-center text-center"><i data-feather="users" class="font-danger"></i></div>
+                                    </div>
+                                    <div class="media-body col-8"><span class="m-0">Total Users</span>
+                                        <h3 class="mb-0"><span class="counter"><%= totalUser%></span></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card order-graph sales-carousel">
+                            <div class="card-header">
+                                <h4 class="f-w-600">Total Product Count</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h2 class="mb-0"><%= totalProduct%></h2>
+                                    </div>
+                                    <div class="bg-primary b-r-8">
+                                        <div class="small-box">
+                                            <i data-feather="box"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                 <div class="card order-graph sales-carousel">
+                            <div class="card-header">
+                                <h4 class="f-w-600">Total Sold Product Count</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h2 class="mb-0"><%= totalSoldProduct%></h2>
+                                    </div>
+                                    <div class="bg-secondary b-r-8">
+                                        <div class="small-box">
+                                            <i data-feather="box"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card order-graph sales-carousel">
+                            <div class="card-header">
+                                <h4 class="f-w-600">Total Approved Product</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h2 class="mb-0"><%= totalApprovedProduct%></h2>
+                                    </div>
+                                    <div class="bg-warning b-r-8">
+                                        <div class="small-box">
+                                            <i data-feather="box"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 xl-50">
+                        <div class="card order-graph sales-carousel">
+                            <div class="card-header">
+                                <h4 class="f-w-600">Total Pending Count</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h2 class="mb-0"><%= totalPendingProduct%></h2>
+                                    </div>
+                                    <div class="bg-danger b-r-8">
+                                        <div class="small-box">
+                                            <i data-feather="box"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 xl-100">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Latest Pending Products</h5>
+                                <div class="card-header-right">
+                                    <ul class="list-unstyled card-option">
+                                        <li><i class="icofont icofont-simple-left"></i></li>
+                                        <li><i class="view-html fa fa-code"></i></li>
+                                        <li><i class="icofont icofont-maximize full-card"></i></li>
+                                        <li><i class="icofont icofont-minus minimize-card"></i></li>
+                                        <li><i class="icofont icofont-refresh reload-card"></i></li>
+                                        <li><i class="icofont icofont-error close-card"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="user-status table-responsive latest-order-table">
+                                    <table class="table table-bordernone">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Product ID</th>
+                                            <th scope="col">Product Price</th>
+                                            <th scope="col">Product Name</th>
+                                            <th scope="col">Seller ID</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for(var i=topPendingProduct.products.length-1;i>=0;i--){ %>
+                                        <tr>
+                                            <td><%= topPendingProduct.products[i].product_id%></td>
+                                            <td class="digits"><%= topPendingProduct.products[i].price%></td>
+                                            <td class="font-primary"><%= topPendingProduct.products[i].name%></td>
+                                            <td class="digits"><%= topPendingProduct.products[i].seller_id%></td>
+                                        </tr>
+                                        <% } %>
+                                        </tbody>
+                                    </table>
+                                    <a href="#" onclick="showProductsbyStatus(3)" class="btn btn-primary">View All Pending Products</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 xl-100">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Latest Sold Products</h5>
+                                <div class="card-header-right">
+                                    <ul class="list-unstyled card-option">
+                                        <li><i class="icofont icofont-simple-left"></i></li>
+                                        <li><i class="view-html fa fa-code"></i></li>
+                                        <li><i class="icofont icofont-maximize full-card"></i></li>
+                                        <li><i class="icofont icofont-minus minimize-card"></i></li>
+                                        <li><i class="icofont icofont-refresh reload-card"></i></li>
+                                        <li><i class="icofont icofont-error close-card"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="user-status table-responsive latest-order-table">
+                                    <table class="table table-bordernone">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Product ID</th>
+                                            <th scope="col">Product Price</th>
+                                            <th scope="col">Product Name</th>
+                                            <th scope="col">Seller ID</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for(var i=topSoldProduct.products.length-1;i>=0;i--){ %>
+                                                <tr>
+                                                    <td><%= topSoldProduct.products[i].product_id%></td>
+                                                    <td class="digits"><%= topSoldProduct.products[i].price%></td>
+                                                    <td class="font-primary"><%= topSoldProduct.products[i].name%></td>
+                                                    <td class="digits"><%= topSoldProduct.products[i].seller_id%></td>
+                                                </tr>
+                                                <% } %>
+                                        </tbody>
+                                    </table>
+                                    <a href="#" onclick="showProductsbyStatus(2)" class="btn btn-primary">View All Sold Products</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Container-fluid Ends-->
+
+        </div>
+
+
+
+        <!-- footer start-->
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 footer-copyright">
+                        <p class="mb-0">GDSD Fulda Group 1 For Educational Purpose</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="pull-right mb-0">GDSD Fulda Group 1<i class="fa fa-heart"></i></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer end-->
+    </div>
+
+</div>
+
+<!-- latest jquery-->
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
+
+<!-- Bootstrap js-->
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.js"></script>
+
+<!-- feather icon js-->
+<script src="/assets/js/icons/feather-icon/feather.min.js"></script>
+<script src="/assets/js/icons/feather-icon/feather-icon.js"></script>
+
+<!-- Sidebar jquery-->
+<script src="/assets/js/sidebar-menu.js"></script>
+
+<!--chartist js-->
+<script src="/assets/js/chart/chartist/chartist.js"></script>
+
+<!--chartjs js-->
+<script src="/assets/js/chart/chartjs/chart.min.js"></script>
+
+<!-- lazyload js-->
+<script src="/assets/js/lazysizes.min.js"></script>
+
+<!--copycode js-->
+<script src="/assets/js/prism/prism.min.js"></script>
+<script src="/assets/js/clipboard/clipboard.min.js"></script>
+<script src="/assets/js/custom-card/custom-card.js"></script>
+
+<!--counter js-->
+<script src="/assets/js/counter/jquery.waypoints.min.js"></script>
+<script src="/assets/js/counter/jquery.counterup.min.js"></script>
+<script src="/assets/js/counter/counter-custom.js"></script>
+
+<!--peity chart js-->
+<script src="/assets/js/chart/peity-chart/peity.jquery.js"></script>
+
+<!--sparkline chart js-->
+<script src="/assets/js/chart/sparkline/sparkline.js"></script>
+
+<!--Customizer admin-->
+<script src="/assets/js/admin-customizer.js"></script>
+
+<!--dashboard custom js-->
+<script src="/assets/js/dashboard/default.js"></script>
+
+<!--right sidebar js-->
+<script src="/assets/js/chat-menu.js"></script>
+
+<!--height equal js-->
+<script src="/assets/js/height-equal.js"></script>
+
+<!-- lazyload js-->
+<script src="/assets/js/lazysizes.min.js"></script>
+
+<!--script admin-->
+<script src="/assets/js/admin-script.js"></script>
+
+<!--  -->
+<!-- Touchspin Js-->
+<script src="/assets/js/touchspin/vendors.min.js"></script>
+<script src="/assets/js/touchspin/touchspin.js"></script>
+<script src="/assets/js/touchspin/input-groups.min.js"></script>
+
+<!-- Rating Js-->
+<script src="/assets/js/rating/jquery.barrating.js"></script>
+<script src="/assets/js/rating/rating-script.js"></script>
+
+<!-- Owlcarousel js-->
+<script src="/assets/js/owlcarousel/owl.carousel.js"></script>
+<script src="/assets/js/dashboard/product-carousel.js"></script>
+
+  <!-- parvin -->
+
+  <script src="/js/admin/Category.js"></script>
+  <script src="/js/admin/User.js"></script>
+  <script src="/js/admin/ProductList.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+  <script src="/socket.io/socket.io.js"></script>
+ <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script> -->
+
+</body>
+
+<!-- Mirrored from themes.pixelstrap.com/multikart/back-end/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Dec 2019 12:59:55 GMT -->
+</html>

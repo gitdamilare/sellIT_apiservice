@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<div><%- include("head.ejs") %></div>
+
+
+<body>
+
+<div class="container card text-center form-signin mt-4 " style="width: 22rem;">
+    <div class="text-center">
+      <form  class="form-signin" action="/api/v1/auth" method="post">
+        <img class="mb-4" src="../../assets/logo_g.png" alt="" width="120" height="120">
+    
+        <div class="form-group mb-4">
+          <label for="uname" class="sr-only">Username / Matrikel No</label>
+          <input name="matrikel_number" type="text" id="uname" class="form-control" placeholder="Username / Matrikel No" required="" autofocus=""
+            formControlName="username">
+          <div class="is-invalid" >
+            Please Provide a username or a Matrikel No
+          </div>
+        </div>
+        <div class="form-group mb-4">
+          <label for="pass" class="sr-only">Password</label>
+          <input type="password" id="pass" class="form-control" name="password" placeholder="Password" required=""
+            formControlName="password">
+          <div class="is-invalid" >
+            Please Provide Password
+          </div>
+        </div>
+    
+    
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <a routerLink="/login" class="btn btn-lg btn-success btn-block">Register</a>
+      </form>
+    
+    </div>
+    </div>
+    
+    
+</body>
+</html>
