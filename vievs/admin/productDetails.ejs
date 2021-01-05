@@ -1,0 +1,49 @@
+<div class='container-fluid'>\
+    <div class='card'>\
+        <div class='row product-page-main card-body'>\
+            <div class='col-xl-4'>\
+                <div class='product-slider owl-carousel owl-theme owl-loaded owl-drag' id='sync1'>\
+                    <div class='owl-stage-outer'>\
+                        <div class='owl-stage' style='transform: translate3d(-8038px, 0px, 0px); transition: all 0.25s ease 0s; width: 11692px;'>"
+                        for(var i=0;i<json.products[0].image.length;i++){
+
+                            body+="<div class='owl-item cloned' style='width: 730.745px;'>\
+                            <div class='item'>\
+                                <img src='"+json.products[0].image[i].url+"' alt='' class='blur-up lazyloaded'>\
+                            </div>\
+                        </div>"
+                        }   
+                      body+="</div>\
+                    </div>\
+                </div>\
+                <div class='owl-carousel owl-theme owl-loaded owl-drag' id='sync2'>\
+                    <div class='owl-stage-outer'>\
+                        <div class='owl-stage'  style='transform: translate3d(-745px, 0px, 0px); transition: all 0.4s ease 0s; width: 1492px;'>"
+                        for(var i=0;i<json.products[0].image.length;i++){
+
+                            body+="<div class='owl-item' style='width: 171.436px; margin-right: 15px;'>\
+                            <div class='item'><img src='"+json.products[0].image[i].url+"' alt=''  class='blur-up lazyloaded'></div>\
+                        </div>"
+                        }     
+                        body+="</div>\
+                    </div>\
+                </div>\
+            </div>\
+            <div class='col-xl-8'>\
+                <div class='product-page-details product-right mb-0'>\
+                    <h2>"+json.products[0].name+"</h2>\
+                    <hr>\
+                    <h6 class='product-title'>product details</h6>\
+                    <p>"+json.products[0].description+"</p>\
+                    <div class='product-price digits mt-2'>\
+                        <h3>"+json.products[0].price+"</h3>\
+                    </div>\
+                    <div class='m-t-15'>\
+                        <button class='btn btn-primary m-r-10' type='button'>Approve</button>\
+                        <button class='btn btn-secondary' type='button'>Deny</button>\
+                    </div>\
+                </div>\
+            </div>\
+        </div>\
+    </div>\
+</div>

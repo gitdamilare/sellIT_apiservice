@@ -1,0 +1,1105 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Sell It App",
+    "description": "This is going to make it easy for the front end guys to play around with the AP",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "/api/v1/",
+      "description": "Local Dev"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Sell It api-services",
+      "description": "API for sell it application"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/studentrecord": {
+      "get": {
+        "tags": [
+          "Student Archive"
+        ],
+        "summary": "Get all Student Archive from the database",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StudentArchives"
+            }
+          }
+        }
+      }
+    },
+    "/studentrecord/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of the student archive record you want to fetch",
+          "type": "number"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Student Archive"
+        ],
+        "summary": "Get Student Archive record By id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StudentArchive"
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get all Users from the database",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+    "/users/": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Register a User on the Platform",
+        "requestBody": {
+          "description": "User Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/product": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get all products from the database",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Products"
+            }
+          }
+        }
+      }
+    },
+    "/product/{startindex}/{limit}": {
+      "parameters": [
+        {
+          "name": "startindex",
+          "in": "path",
+          "required": true,
+          "description": "Starting Index of the products that you want to fetch",
+          "type": "number"
+        },
+        {
+          "name": "limit",
+          "in": "path",
+          "required": true,
+          "description": "Limit of the products that you want to fetch",
+          "type": "number"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Fetch Product with Pagination by Applying Starting Index and Limit",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "startindex",
+            "required": true,
+            "description": "Starting Index",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          {
+            "in": "path",
+            "name": "limit",
+            "required": true,
+            "description": "Limit",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      }
+    },
+    "/product/id/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of the product that you want to fetch",
+          "type": "number"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get Product By ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Product with id",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      }
+    },
+    "/product/userproduct/{userid}": {
+      "parameters": [
+        {
+          "name": "userid",
+          "in": "path",
+          "required": true,
+          "description": "User ID of the product that you want to fetch",
+          "type": "number"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get Product By ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userid",
+            "required": true,
+            "description": "Product with user id",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      }
+    },
+    "/product/recentproduct/{userid}": {
+      "parameters": [
+        {
+          "name": "userid",
+          "in": "path",
+          "required": true,
+          "description": "User ID of the product that you want to fetch",
+          "type": "number"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Get Product By ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userid",
+            "required": true,
+            "description": "Product with user id",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      }
+    },
+    "/product/{product_name}": {
+      "parameters": [
+        {
+          "name": "product_name",
+          "in": "path",
+          "required": true,
+          "description": "name of the product that you want to fetch",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Search for a Product by the product name",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "product_name",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/product_name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      }
+    },
+    "/product/getProductsByStatus/{status}": {
+      "parameters": [
+        {
+          "name": "status",
+          "in": "path",
+          "required": true,
+          "description": "status of the product that you want to fetch",
+          "type": "number"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Search for a Product by the status id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "status",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/product_name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Products"
+            }
+          }
+        }
+      }
+    },
+    "/product/getProductsByCategory/{categoryid}": {
+      "parameters": [
+        {
+          "name": "categoryid",
+          "in": "path",
+          "required": true,
+          "description": "category id of the product that you want to fetch",
+          "type": "number"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Search for a Product by the category id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "categoryid",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Products"
+            }
+          }
+        }
+      }
+    },
+    "/product/changeProductStatus": {
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Update a Product Status",
+        "requestBody": {
+          "description": "Product Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Update_Product"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/product/add": {
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Create a Product",
+        "requestBody": {
+          "description": "Product Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/category": {
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Get all Category from the database",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Categories"
+            }
+          }
+        }
+      }
+    },
+    "/category/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of the category record you want to fetch",
+          "type": "number"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Get Category and Brand record By id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StudentArchive"
+            }
+          }
+        }
+      }
+    },
+    "/category/": {
+      "post": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Post a Category into the System ",
+        "requestBody": {
+          "description": "Category Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/auth": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Login into the System",
+        "requestBody": {
+          "description": "Authentication Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Authentication"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/auth/admin": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Login into the System For Admin",
+        "requestBody": {
+          "description": "Authentication Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Authentication"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/brand": {
+      "get": {
+        "tags": [
+          "Brand"
+        ],
+        "summary": "Get all brands from the database",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Brand"
+            }
+          }
+        }
+      }
+    },
+    "/dashboard": {
+      "get": {
+        "tags": [
+          "Admin Dashboard"
+        ],
+        "summary": "Reporting System for the Platform",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Dashboard"
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/api": {
+      "get": {
+        "tags": [
+          "Admin Dashboard"
+        ],
+        "summary": "Reporting System for the Platform, Use this for the API calls",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Dashboard"
+            }
+          }
+        }
+      }
+    },
+    "/chat/{matrikel_number}": {
+      "parameters": [
+        {
+          "name": "matrikel_number",
+          "in": "path",
+          "required": true,
+          "description": "Get all the chat for a particular matrikel_number",
+          "type": "number"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Get all the chat for a particular matrikel_number",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "matrikel_number",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/matrikel_number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Chat"
+            }
+          }
+        }
+      }
+    },
+    "/chat/sendMessage": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Send a Message",
+        "requestBody": {
+          "description": "SendChat Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/SendChat"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    },
+    "/chat/getAllMessages": {
+      "post": {
+        "tags": [
+          "Chat"
+        ],
+        "summary": "Get All Message",
+        "requestBody": {
+          "description": "GetChat Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/GetChat"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "400": {
+            "description": "Failed. Bad post data."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "id": {
+      "properties": {
+        "id": {
+          "type": "number"
+        }
+      }
+    },
+    "product_name": {
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "status": {
+      "properties": {
+        "id": {
+          "type": "number"
+        }
+      }
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "description": {
+          "type": "boolean"
+        },
+        "price": {
+          "type": "string"
+        },
+        "seller_id": {
+          "type": "number"
+        },
+        "more_details": {
+          "type": "string"
+        },
+        "status": {
+          "type": "number"
+        },
+        "category_id": {
+          "type": "number"
+        },
+        "brand_id": {
+          "type": "number"
+        },
+        "product_condition": {
+          "type": "number"
+        }
+      }
+    },
+    "Products": {
+      "type": "object",
+      "properties": {
+        "products": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Product"
+          }
+        }
+      }
+    },
+    "Update_Product": {
+      "type": "object",
+      "properties": {
+        "productid": {
+          "type": "number"
+        },
+        "status": {
+          "type": "number"
+        }
+      }
+    },
+    "StudentArchive": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "matrikel_number": {
+          "type": "number"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "dob": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "phone_number": {
+          "type": "string"
+        },
+        "postal_code": {
+          "type": "string"
+        },
+        "created_date": {
+          "type": "string"
+        },
+        "modified_date": {
+          "type": "string"
+        }
+      }
+    },
+    "StudentArchives": {
+      "type": "object",
+      "properties": {
+        "studentarchives": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/StudentArchive"
+          }
+        }
+      }
+    },
+    "Category": {
+      "type": "object",
+      "properties": {
+        "parent_id": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Categories": {
+      "type": "object",
+      "properties": {
+        "categories": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Category"
+          }
+        }
+      }
+    },
+    "Image": {
+      "type": "object",
+      "properties": {
+        "image_id": {
+          "type": "number"
+        },
+        "image": {
+          "type": "number"
+        },
+        "url": {
+          "type": "string"
+        },
+        "primary_image_id": {
+          "type": "number"
+        }
+      }
+    },
+    "Images": {
+      "type": "object",
+      "properties": {
+        "images": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Image"
+          }
+        }
+      }
+    },
+    "Authentication": {
+      "type": "object",
+      "properties": {
+        "matrikel_number": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Brand": {
+      "type": "object",
+      "properties": {
+        "brand_id": {
+          "type": "number"
+        },
+        "category_id": {
+          "type": "number"
+        },
+        "brand_name": {
+          "type": "number"
+        },
+        "created_date": {
+          "type": "string"
+        },
+        "modified_date": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "matrikel_number": {
+          "type": "number"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "dob": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "phone_number": {
+          "type": "string"
+        },
+        "role_id": {
+          "type": "number"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "postal_code":{
+          "type": "string"
+        }
+      }
+    },
+    "Users": {
+      "type": "object",
+      "properties": {
+        "users": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/User"
+          }
+        }
+      }
+    },
+    "Dashboard": {
+      "type": "object",
+      "properties": {
+        "totalProduct": {
+          "type": "number"
+        },
+        "totalSoldProduct": {
+          "type": "number"
+        },
+        "totalPendingProduct": {
+          "type": "number"
+        },
+        "totalApprovedProduct": {
+          "type": "number"
+        },
+        "totalInActiveProduct": {
+          "type": "number"
+        },
+        "totalDeletedProduct": {
+          "type": "number"
+        }
+      }
+    },
+    "Chat": {
+      "type": "object",
+      "properties": {
+        "matrikel_number": {
+          "type": "number"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "product_name": {
+          "type": "string"
+        }
+      }
+    },
+    "SendChat": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "product_id": {
+          "type": "number"
+        },
+        "sender_id": {
+          "type": "number"
+        },
+        "receiver_id": {
+          "type": "number"
+        }
+      }
+    },
+    "GetChat": {
+      "type": "object",
+      "properties": {
+        "receiver_id": {
+          "type": "number"
+        },
+        "sender_id": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

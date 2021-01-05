@@ -1,0 +1,39 @@
+<div id="index" style="display:none" ><%- include("index.ejs") %></div>
+<div id="login" ><!DOCTYPE html>
+<html >
+
+<script src="/js/admin/User.js"></script>
+<body >
+
+<div class="container card text-center form-signin mt-4 " style="width: 22rem;">
+    <div class="text-center">
+        <img class="mb-4" src="/assets/images/logo_g.png" alt="" width="50" height="50">
+    
+        <div class="form-group mb-4">
+          <label for="uname" class="sr-only">Username / Matrikel No</label>
+          <input name="matrikel_number" type="text" id="uname" class="form-control" placeholder="Username / Matrikel No" required="" autofocus=""
+            formControlName="username">
+          <div class="is-invalid" >
+            Please Provide a username or a Matrikel No
+          </div>
+        </div>
+        <div class="form-group mb-4">
+          <label for="pass" class="sr-only">Password</label>
+          <input type="password" id="pass" class="form-control" name="password" placeholder="Password" required=""
+            formControlName="password">
+          <div class="is-invalid" >
+            Please Provide Password
+          </div>
+        </div>
+    
+    
+        <button onclick="login()" class="btn btn-lg btn-primary btn-block" >Sign in</button>
+    
+    </div>
+    </div>
+    
+    
+</body>
+
+</html>
+</div>

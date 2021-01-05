@@ -1,0 +1,35 @@
+{
+  "name": "api-services",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "angular-font-awesome": "^3.1.2",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.3.5",
+    "cryptr": "^6.0.1",
+    "ejs": "^3.0.1",
+    "enum": "^2.5.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6",
+    "express-session": "^1.17.0",
+    "font-awesome": "^4.7.0",
+    "image-to-base64": "^2.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.0.1",
+    "request": "^2.81.0",
+    "save": "^2.4.0",
+    "sequelize": "^5.21.2",
+    "sessionstorage": "^0.1.0",
+    "socket.io": "^2.3.0",
+    "swagger-ui-express": "^4.1.2",
+    "uid-safe": "^2.1.5",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<div><%- include("head.ejs") %></div>
+
+
+<body>
+    <script>
+    function showResult(str) {
+        // Add your code below this line
+        req=new XMLHttpRequest();
+      req.open("GET",'/api/v1/product/'+str,true);
+      req.send();
+      req.onload=function(){
+          json=JSON.parse(req.responseText);
+          var body="";
+          for(var i=0;i<json.products.length;i++)
+          {
+              body+="<div class='results' > \
+            <div class='repo' >\
+                <div class='card-deck'>\
+                    <div class='card'>\
+                    <img src='"+json.products[i].image[0].url+"'\
+                        width='200'\
+                        height='auto'\
+                        alt='avatar'\
+                    />\
+                    <h2>"+json.products[i].name+"</h2>\
+                    <p"+json.products[i].description+"</p>\
+                    <p>Price: "+json.products[i].price+"</p>\
+                </div>\
+                </div> \
+            </div>\
+        </div>"
+          }
+          console.log(json.products.length);
+          document.getElementById('searchResult').innerHTML=body;         
+      };
+      
+        
+        // Add your code above this line
+      };
+  </script>
+
+        <input type="text" id="search" name="search" placeholder="Search" class="form-control col-md-7 col-xs-12" onkeyup="showResult(this.value)" >   
+     
+
+        
+          
+          <div id="searchResult"></div>
+          
+           
+</body>
+</html>
